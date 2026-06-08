@@ -15,29 +15,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Complaint Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            color: brown;
-            background-color: white;
+            font-family: 'Poppins', sans-serif;
+            color: #34495e;
+            background-color: #f4f6f8;
         }
 
         header {
-            background-color: #a81c1c;
+            background-color: #2c3e50; /* Dark blue-gray */
             color: white;
-            padding: 10px 20px;
+            padding: 15px 30px;
             display: flex;
             align-items: center;
-            font-size: 24px;
             justify-content: space-between;
-            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .header-title {
             flex: 1;
             text-align: center;
-            margin: auto;
+            font-size: 1.8rem;
+            font-weight: 600;
         }
 
         .profile-section {
@@ -48,11 +51,10 @@
         }
 
         .profile-photo {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            border: 2px solid #ccc;
-            overflow: hidden;
+            border: 2px solid #fff;
             object-fit: cover;
         }
 
@@ -61,122 +63,124 @@
             top: 60px;
             right: 0;
             background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             overflow: hidden;
             display: none;
             z-index: 1000;
-            width: 200px;
+            width: 220px;
+            border: 1px solid #ecf0f1;
         }
 
         .dropdown-header {
-            background-color: #a81c1c;
-            color: white;
+            background-color: #f8f9fa;
+            color: #2c3e50;
             text-align: left;
-            padding: 10px 15px;
-            font-size: 18px;
-            font-weight: bold;
+            padding: 12px 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-bottom: 1px solid #ecf0f1;
         }
 
         .dropdown-item {
             display: flex;
             align-items: center;
-            padding: 10px 15px;
-            border-top: 1px solid #ddd;
+            padding: 12px 15px;
             cursor: pointer;
+            text-decoration: none;
+            color: #34495e;
+            transition: background-color 0.2s ease;
         }
 
         .dropdown-item:hover {
-            background-color: #f5f5f5;
-        }
-
-        .dropdown-item:first-child {
-            border-top: none;
+            background-color: #f4f6f8;
         }
 
         .dropdown-icon {
-            font-size: 18px;
-            margin-right: 10px;
-            color: #a81c1c;
+            font-size: 20px;
+            margin-right: 15px;
+            color: #3498db; /* A nice blue for icons */
+            width: 20px;
+            text-align: center;
         }
 
         .dropdown-text {
-            font-size: 16px;
-            color: #333;
+            font-size: 1rem;
         }
 
         .hero {
-            background-color: #f5f5dc;
-            padding: 20px 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            border-bottom: 2px solid #a81c1c;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
-            color: #0d47a1;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
         }
 
         .hero p {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 20px;
-            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px;
-            padding: 20px;
+            gap: 30px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .grid-item {
-            background: #e3f2fd;
-            border: 1px solid #bbdefb;
-            padding: 50px;
-            border-radius: 5px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
             text-align: center;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .grid-item:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
         .grid-item img {
             width: 100%;
-            max-height: 200px;
+            height: 180px;
             object-fit: cover;
             border-radius: 8px;
+            margin-bottom: 20px;
         }
 
         .grid-item h3 {
-            margin-top: 15px;
+            margin-top: 0;
+            margin-bottom: 10px;
             font-size: 1.5rem;
-            color: #0d47a1;
+            font-weight: 600;
+            color: #2c3e50;
         }
 
         .grid-item p {
-            color: #616161;
+            color: #7f8c8d;
             font-size: 1rem;
+            line-height: 1.5;
         }
 
         .footer {
-            background-color: brown;
+            background-color: #2c3e50;
             color: white;
             text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 20px;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -187,20 +191,20 @@
             <img src="https://shorturl.at/C5nKT" alt="Profile Photo" class="profile-photo">
             <div class="dropdown-menu" id="profileDropdown">
                 <div class="dropdown-header">Profile Options</div>
-                <div class="dropdown-item">
+                <a href="#" class="dropdown-item">
                     <div class="dropdown-icon">👤</div>
-                    <div class="dropdown-text">Open User Profile</div>
-                </div>
-                <div class="dropdown-item">
+                    <div class="dropdown-text">User Profile</div>
+                </a>
+                <a href="LogoutServlet" class="dropdown-item">
                     <div class="dropdown-icon">🚪</div>
                     <div class="dropdown-text">Logout</div>
-                </div>
+                </a>
             </div>
         </div>
     </header>
 
     <div class="hero">
-        <h1>Welcome to Smart Complaint Registration<br><%= email %></h1>
+        <h1>Welcome, <%= email %></h1>
         <p>
             Enhance efficiency and transparency by registering and tracking your complaints here.
         </p>

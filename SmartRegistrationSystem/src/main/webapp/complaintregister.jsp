@@ -3,63 +3,116 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Complaint</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #f4f6f8;
+            color: #34495e;
         }
 
-        header {
-            background-color: #a81c1c;
+        .header {
+            background-color: #2c3e50;
             color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            background: #3498db;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #2980b9;
+        }
+
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .form-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #ffffff;
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border: 1px solid #ecf0f1;
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            animation: slideUpFade 0.6s ease-out forwards;
         }
 
         .form-container h2 {
             text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-weight: 700;
+            font-size: 1.8rem;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 12px 15px;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            border: 1px solid #dcdde1;
+            border-radius: 6px;
             box-sizing: border-box;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+            outline: none;
         }
 
         textarea {
-            height: 80px;
-            resize: none;
+            height: 100px;
+            resize: vertical;
         }
 
         .hidden {
@@ -68,24 +121,24 @@
 
         button {
             width: 100%;
-            background-color: #a81c1c;
-            color: white;
-            padding: 12px 20px;
+            padding: 12px;
             font-size: 16px;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            background-color: #3498db;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
         }
 
         button:hover {
-            background-color: #8b0000;
+            background-color: #2980b9;
+            transform: translateY(-2px);
         }
 
-        @media (max-width: 768px) {
-            .form-container {
-                padding: 15px;
-            }
-        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -133,10 +186,13 @@
     </script>
 </head>
 <body>
-    <header>Register Your Complaint</header>
+    <div class="header">
+        <div class="header-title">Register Complaint</div>
+        <a href="UserDashboard.jsp" class="back-btn">Back to Dashboard</a>
+    </div>
 
     <div class="form-container">
-        <h2>Complaint Registration</h2>
+        <h2>File a New Complaint</h2>
         <form action="complaintregisterservlet" method="POST">
     <!-- User Information -->
     <div class="form-group">

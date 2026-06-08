@@ -4,36 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Verify Code</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f8f8f8;
+      background-color: #f4f6f8;
+      color: #34495e;
     }
 
     .header {
-      background-color: #a81c1c;
+      background-color: #2c3e50;
       color: white;
-      padding: 15px 20px;
+      padding: 15px 30px;
       text-align: center;
-      font-size: 24px;
+      font-size: 1.5rem;
+      font-weight: 600;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    @keyframes slideUpFade {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .container {
-      max-width: 500px;
-      margin: 50px auto;
-      padding: 20px;
+      max-width: 450px;
+      margin: 60px auto;
+      padding: 40px;
       background: white;
-      border: 1px solid #ddd;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
+      border: 1px solid #ecf0f1;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+      animation: slideUpFade 0.6s ease-out forwards;
     }
 
     .container h1 {
       text-align: center;
-      color: #133;
+      color: #2c3e50;
+      margin-top: 0;
       margin-bottom: 30px;
+      font-weight: 700;
     }
 
     .form-group {
@@ -42,38 +62,47 @@
 
     .form-group label {
       display: block;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #555;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #7f8c8d;
+      font-size: 0.9rem;
     }
 
     .form-group input {
       width: 100%;
-      padding: 10px;
+      padding: 12px 15px;
       font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      font-family: 'Poppins', sans-serif;
+      border: 1px solid #dcdde1;
+      border-radius: 6px;
+      box-sizing: border-box;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
 
     .form-group input:focus {
-      border-color: #a81c1c;
+      border-color: #3498db;
+      box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
       outline: none;
-      box-shadow: 0 0 5px rgba(168, 28, 28, 0.5);
     }
 
     .btn {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       font-size: 16px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
       color: white;
-      background-color: #a81c1c;
+      background-color: #3498db;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      margin-top: 10px;
     }
 
     .btn:hover {
-      background-color: #901717;
+      background-color: #2980b9;
+      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -85,9 +114,10 @@
 
   <div class="container">
     <h1>Enter Code</h1>
-    <form action="ForgotPasswordServlet" method="POST">
+    <form action="VerifyCodeServlet" method="POST">
+      <input type="hidden" name="email" value="${email}">
       <div class="form-group">
-        <label for="code">Enter the code sent to your email:</label>
+        <label for="code">Enter the code sent to your email</label>
         <input type="text" id="code" name="code" placeholder="Enter the code" required>
       </div>
 
